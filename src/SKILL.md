@@ -135,3 +135,8 @@ Never experiment with pointer/key automation on the person's real display.
 When developing the app on Linux, its `scripts/sandbox` provides an isolated
 home, core and display: `up`, `do`, `status`, `shot`, then `down` when done.
 Never stop a server or session you didn't start.
+
+Terminal right-click menus offer Copy and Paste. Hold Shift while dragging to
+select text when an agent captures the mouse; Shift+right-click always opens the
+menu. `terminal.copy` and `terminal.paste` accept an optional `terminal` address
+to operate on that terminal instead of the focused one.

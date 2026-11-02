@@ -282,15 +282,19 @@ Show a terminal in a pane for now, in place of its own (no terminal: back).
 
 ## `terminal.copy`
 
-Copy the focused terminal's selection.
+Copy a terminal's selection (defaults to the focused terminal).
 
-No arguments.
+| Argument | Required |
+|---|---|
+| `terminal` | no |
 
 ## `terminal.paste`
 
-Paste into the focused terminal (copied files as if dropped; an image alone as terminal.paste_image pastes it).
+Paste into a terminal (defaults to the focused terminal; copied files as if dropped; an image alone as terminal.paste_image pastes it).
 
-No arguments.
+| Argument | Required |
+|---|---|
+| `terminal` | no |
 
 ## `terminal.paste_image`
 

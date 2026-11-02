@@ -3026,7 +3026,15 @@ impl AppWindow {
                 }
             }
             "terminal.copy" | "terminal.paste" | "terminal.paste_image" => {
-                if let Some(t) = self.focused_terminal(window) {
+                // A context menu keeps its clicked target even when another pane
+                // had focus. Never fall back to that pane if the target disappeared.
+                let target = Self::arg(a, "terminal");
+                let terminal = match target {
+                    Some(address) => self.focused_terminal(window).filter(|t| t.address == address)
+                        .or_else(|| self.terms.values().find(|t| t.address == address)),
+                    None => self.focused_terminal(window),
+                };
+                if let Some(t) = terminal {
                     t.view.update(cx, |v, cx| match name {
                         "terminal.paste" => v.paste(cx),
                         "terminal.paste_image" => v.paste_image(cx),
